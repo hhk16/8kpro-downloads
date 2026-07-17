@@ -17,5 +17,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Test primary and backup from UAE and Lebanon
+      - name: Test primary and backup from UAE, KSA, and Lebanon
         run: node monitor-downloads.mjs
