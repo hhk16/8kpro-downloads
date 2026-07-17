@@ -14,4 +14,4 @@ The primary download service publishes the current APK with Android-compatible h
 
 ## Availability monitoring
 
-The scheduled health workflow checks both the primary Railway download endpoint and this GitHub mirror. It performs real byte-range requests locally and through Globalping probes on Emirates Internet in the UAE and from Lebanon.
+The scheduled health workflow checks both the primary Railway download endpoint and this GitHub mirror. It performs real byte-range requests locally and through all available Globalping probes in the UAE and Saudi Arabia, plus Lebanon.

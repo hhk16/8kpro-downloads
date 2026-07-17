@@ -46,8 +46,9 @@ async function globalpingRangeCheck(label, url) {
       type: 'http',
       target: target.hostname,
       locations: [
-        { asn: 5384, limit: 1 },
-        { country: 'LB', limit: 1 },
+        { country: 'AE', limit: 20 },
+        { country: 'SA', limit: 20 },
+        { country: 'LB', limit: 5 },
       ],
       measurementOptions: {
         protocol: 'HTTPS',
@@ -72,14 +73,17 @@ async function globalpingRangeCheck(label, url) {
   }
 
   assert(measurement?.status === 'finished', `${label}: Globalping measurement did not finish`);
-  assert(measurement.results?.length >= 2, `${label}: expected UAE and Lebanon probe results`);
+  const returnedCountries = new Set(measurement.results?.map((entry) => entry.probe.country));
+  assert(returnedCountries.has('AE'), `${label}: no UAE probe result was returned`);
+  assert(returnedCountries.has('SA'), `${label}: no Saudi Arabia probe result was returned`);
+  assert(returnedCountries.has('LB'), `${label}: no Lebanon probe result was returned`);
   for (const entry of measurement.results) {
     const location = `${entry.probe.city}, ${entry.probe.country} / ${entry.probe.network}`;
     assert(entry.result.status === 'finished', `${label}: ${location} failed: ${entry.result.rawOutput || 'unknown error'}`);
     assert(entry.result.statusCode === 206, `${label}: ${location} returned HTTP ${entry.result.statusCode}`);
     assert(entry.result.headers?.['content-range'] === `bytes 0-0/${expectedSize}`, `${label}: ${location} returned an invalid content range`);
   }
-  console.log(`${label}: UAE/Lebanon checks passed — https://globalping.io?measurement=${created.id}`);
+  console.log(`${label}: UAE/KSA/Lebanon checks passed across ${measurement.results.length} probes — https://globalping.io?measurement=${created.id}`);
 }
 
 await rangeCheck('primary', primaryUrl);
