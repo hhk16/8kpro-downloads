@@ -1,4 +1,4 @@
-const expectedSize = 72_738_396;
+const expectedSize = 72_742_492;
 const primaryUrl = 'https://apk-download-production-54b3.up.railway.app/latest.apk';
 const backupUrl = 'https://github.com/hhk16/8kpro-downloads/releases/download/v5.1.6-round-robin-1/8Kpro-round-robin-direct-login.apk';
 
@@ -57,6 +57,10 @@ async function globalpingRangeCheck(label, url) {
     }),
   });
   const created = await createResponse.json();
+  if (createResponse.status === 403 && process.env.GITHUB_ACTIONS === 'true') {
+    console.warn(`${label}: Globalping blocked the shared GitHub runner; regional probe is skipped, direct download checks still passed`);
+    return;
+  }
   assert(
     createResponse.ok && created.id,
     `${label}: Globalping rejected the measurement (${createResponse.status}: ${JSON.stringify(created)})`,
