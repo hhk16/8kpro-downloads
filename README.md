@@ -9,7 +9,7 @@ The primary download service publishes the current APK with Android-compatible h
 ## Current release
 
 - Version: `5.1.6-round-robin-1`
-- SHA-256: `3d7d981d1455fad93fa39e675f332fe92ddf61bdb08819fdcd6011562300a617`
+- SHA-256: `1ae08ebb504f10463561277d89cd721194566e315a37f88843432bd1f8b69dea`
 - Size: `72,738,396` bytes
 
 ## Availability monitoring
