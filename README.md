@@ -8,9 +8,9 @@ The primary download service publishes the current APK with Android-compatible h
 
 ## Current release
 
-- Version: `5.1.6-playback-watch-1`
-- SHA-256: `60cd965022d43065781579d92c5fd3fb0a7cf5eea43d0102abb9c5a4b1969c51`
-- Size: `72,730,204` bytes
+- Version: `5.1.6-round-robin-1`
+- SHA-256: `987e372b570deccfcb2559911644d67462919a53984436a04f8321b915f6a6ab`
+- Size: `72,734,300` bytes
 
 ## Availability monitoring
 
