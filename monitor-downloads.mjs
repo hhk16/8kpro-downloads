@@ -1,4 +1,4 @@
-const expectedSize = 72_746_588;
+const expectedSize = 72_742_492;
 const primaryUrl = 'https://apk-download-production-54b3.up.railway.app/latest.apk';
 const backupUrl = 'https://github.com/hhk16/8kpro-downloads/releases/download/v5.1.6-round-robin-1/8Kpro-round-robin-direct-login.apk';
 
