@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090a0b">
+<title>100 PUSH</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta name="description" content="100 PUSH six-week push-up challenge">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{--bg:#090a0b;--card:#111317;--card2:#171a1f;--line:#272c33;--text:#f7f8f8;--muted:#969da7;--lime:#d9ff43;--lime2:#b7da25;--red:#ff6962}
+*{box-sizing:border-box}html{background:var(--bg);color-scheme:dark}body{margin:0;background:radial-gradient(circle at 80% -10%,rgba(217,255,67,.12),transparent 420px),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}button,input,textarea{font:inherit}.app{width:min(980px,100%);margin:auto;padding:18px 14px 100px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:10px;font-weight:1000;letter-spacing:-.06em}.logo{display:grid;place-items:center;width:43px;height:43px;border-radius:14px;background:var(--lime);color:#090a0b}.save{font-size:11px;color:var(--muted);text-align:right}.save b{display:block;color:var(--lime)}
+h1,h2,h3,p{margin-top:0}h1{font-size:clamp(44px,10vw,82px);line-height:.9;letter-spacing:-.075em;margin-bottom:16px}h2{font-size:clamp(30px,6vw,48px);letter-spacing:-.055em;line-height:1;margin-bottom:8px}.eyebrow{color:var(--lime);font-weight:900;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}.muted{color:var(--muted);line-height:1.55}.card{background:rgba(17,19,23,.92);border:1px solid var(--line);border-radius:24px;padding:20px}.hero{padding:clamp(25px,6vw,54px);min-height:64vh;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,rgba(217,255,67,.10),transparent 40%),var(--card);overflow:hidden;position:relative}.hero:after{content:'100';position:absolute;right:-18px;bottom:-60px;font-size:clamp(150px,40vw,350px);font-weight:1000;letter-spacing:-.14em;color:rgba(255,255,255,.025);pointer-events:none}.btn{border:0;border-radius:15px;min-height:50px;padding:13px 17px;font-weight:900;background:var(--card2);color:var(--text);cursor:pointer}.btn.primary{background:var(--lime);color:#090a0b}.btn.ghost{border:1px solid var(--line);background:transparent}.btn.red{background:rgba(255,105,98,.1);color:#ff8983;border:1px solid rgba(255,105,98,.2)}.row{display:flex;gap:12px;align-items:center;justify-content:space-between}.wrap{flex-wrap:wrap}.input{width:100%;border:1px solid var(--line);border-radius:15px;background:#0b0d0f;color:var(--text);padding:14px 15px;font-size:18px;outline:none}.input:focus{border-color:rgba(217,255,67,.55);box-shadow:0 0 0 4px rgba(217,255,67,.07)}.startrow{display:grid;grid-template-columns:1fr auto;gap:10px;max-width:470px;margin-top:22px}.screen{display:none}.screen.active{display:block}.nav{position:fixed;z-index:20;left:50%;bottom:14px;transform:translateX(-50%);width:min(560px,calc(100% - 20px));display:grid;grid-template-columns:repeat(4,1fr);padding:7px;border-radius:20px;background:rgba(15,17,20,.94);border:1px solid var(--line);backdrop-filter:blur(16px)}.nav button{border:0;background:transparent;color:var(--muted);border-radius:14px;padding:10px 4px;font-size:10px;font-weight:900}.nav button.active{background:#1a1d22;color:var(--text)}.nav span{display:block;font-size:17px;margin-bottom:3px}.grid2{display:grid;grid-template-columns:1.35fr .8fr;gap:14px}.mission{background:linear-gradient(135deg,rgba(217,255,67,.15),rgba(17,19,23,.92) 60%)}.label{font-size:10px;color:var(--muted);font-weight:900;letter-spacing:.12em;text-transform:uppercase}.big{font-size:clamp(48px,10vw,76px);line-height:.9;font-weight:1000;letter-spacing:-.07em}.sets{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.setchip{min-width:52px;height:52px;border:1px solid var(--line);border-radius:15px;display:grid;place-items:center;background:#0d0f11;font-weight:1000}.progress{height:11px;background:#070809;border:1px solid #20242a;border-radius:999px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,var(--lime2),var(--lime));width:0;transition:.3s;border-radius:999px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.stat{padding:14px;background:#0c0e10;border:1px solid var(--line);border-radius:17px}.stat b{display:block;font-size:24px;letter-spacing:-.04em}.stat span{font-size:9px;color:var(--muted);font-weight:900}.quote{font-size:20px;line-height:1.25;letter-spacing:-.03em}.rhythm{display:grid;grid-template-columns:repeat(14,1fr);gap:5px;margin-top:12px}.dot{aspect-ratio:1;border-radius:7px;border:1px solid var(--line);background:#0c0e10;display:grid;place-items:center;font-size:8px;color:var(--muted)}.dot.done{background:var(--lime);color:#090a0b;border-color:transparent}.week{border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:10px}.weekhead{padding:16px;display:flex;align-items:center;justify-content:space-between}.days{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.day{border:0;border-right:1px solid var(--line);background:#0e1013;color:var(--text);padding:15px;text-align:left;min-height:95px;cursor:pointer}.day:last-child{border-right:0}.day.done{background:rgba(217,255,67,.05)}.day small{color:var(--muted)}.day b{display:block;margin-top:12px}.badge{font-size:10px;font-weight:900;color:var(--lime);border:1px solid rgba(217,255,67,.2);background:rgba(217,255,67,.08);padding:7px 10px;border-radius:999px}.workout{display:none}.workout.active{display:block}.setrow{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:17px;background:#0c0e10;margin-top:9px}.setnum{width:42px;height:42px;border-radius:13px;background:#171a1f;display:grid;place-items:center;font-weight:1000}.reps{font-size:25px;font-weight:1000}.donebtn{border:0;border-radius:12px;background:var(--lime);color:#090a0b;font-weight:1000;padding:10px 12px}.setrow.complete{opacity:.45}.timer{display:none;text-align:center;padding:26px;margin-top:12px;border:1px solid rgba(217,255,67,.22);background:rgba(217,255,67,.05);border-radius:22px}.timer.show{display:block}.time{font-size:86px;font-weight:1000;letter-spacing:-.08em;line-height:1}.achievement-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:12px}.ach{padding:14px;border:1px solid var(--line);border-radius:16px;background:#0c0e10;opacity:.45}.ach.on{opacity:1;border-color:rgba(217,255,67,.28)}.ach b{display:block}.ach small{color:var(--muted)}.testbox{text-align:center;max-width:650px;margin:18px auto}.counter{font-size:clamp(100px,28vw,180px);font-weight:1000;letter-spacing:-.09em;line-height:.9;margin:24px 0}.toast{position:fixed;z-index:50;top:16px;left:50%;transform:translate(-50%,-20px);opacity:0;background:white;color:#090a0b;padding:11px 15px;border-radius:13px;font-weight:900;transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}.install{margin-top:14px;border-color:rgba(217,255,67,.24);background:linear-gradient(135deg,rgba(217,255,67,.08),var(--card))}.xp{display:flex;gap:10px;align-items:center}.xpnum{font-size:28px;font-weight:1000}.file{position:absolute;opacity:0;pointer-events:none}.footer{font-size:10px;color:#666e77;line-height:1.5;margin-top:20px}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}.days{grid-template-columns:1fr}.day{border-right:0;border-bottom:1px solid var(--line);min-height:78px}.day:last-child{border-bottom:0}.startrow{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.app{padding:14px 12px 96px}.achievement-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div id="toast" class="toast">Saved</div>
+<div class="app">
+<header class="top">
+  <div class="brand"><div class="logo">100</div><div>100 PUSH</div></div>
+  <div class="save"><b id="saveState">SAVED ✓</b><span id="saveTime">Local progress</span></div>
+</header>
+
+<section id="setup" class="screen">
+  <div class="card hero">
+    <div class="eyebrow">The century challenge</div>
+    <h1>ONE GOAL.<br>100 STRAIGHT.</h1>
+    <p class="muted">Six weeks. Three missions per week. Adaptive sets, timed rest, max tests, XP, achievements and a final run at 100 consecutive push-ups.</p>
+    <div class="startrow">
+      <input id="startMax" class="input" type="number" min="1" max="200" inputmode="numeric" placeholder="Your current strict max">
+      <button id="build" class="btn primary">BUILD MY PLAN</button>
+    </div>
+    <p class="muted" style="font-size:12px;margin-top:12px">Strict reps only: straight body, controlled depth, full lockout. Your plan adapts after checkpoint tests.</p>
+  </div>
+</section>
+
+<section id="today" class="screen">
+  <div class="row wrap">
+    <div><div class="eyebrow">Today's mission</div><h2 id="weekTitle">Week 1</h2><p id="motivation" class="muted">Show up. Do the work. Bank the win.</p></div>
+    <div class="xp"><div><div class="label">Level</div><div id="level" class="xpnum">1</div></div><div><div class="label">XP</div><div id="xp" class="xpnum">0</div></div></div>
+  </div>
+  <div class="grid2">
+    <div class="card mission">
+      <div class="label">Next workout</div>
+      <div id="nextLabel" class="big" style="margin-top:10px">W1 D1</div>
+      <div id="nextSets" class="sets"></div>
+      <button id="startWorkout" class="btn primary">START MISSION</button>
+    </div>
+    <div class="card">
+      <div class="label">Century meter</div>
+      <div style="margin:16px 0 12px"><span id="best" class="big">0</span><span class="muted"> / 100</span></div>
+      <div class="progress"><div id="centuryBar" class="bar"></div></div>
+      <p id="centuryText" class="muted" style="font-size:12px;margin:10px 0 0">100 reps is the target.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="row"><div><div class="label">Challenge progress</div><h3 id="progressText" style="margin:5px 0 0">0 of 18 missions</h3></div><div id="progressPct" class="badge">0%</div></div>
+    <div class="progress" style="margin-top:14px"><div id="challengeBar" class="bar"></div></div>
+    <div class="stats">
+      <div class="stat"><b id="totalReps">0</b><span>REPS BANKED</span></div>
+      <div class="stat"><b id="doneCount">0</b><span>MISSIONS</span></div>
+      <div class="stat"><b id="prCount">1</b><span>MAX TESTS</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="row"><div><div class="label">14-day rhythm</div><h3 style="margin:5px 0 0">Rest days count too</h3></div><div id="rhythmScore" class="badge">0 TRAINING DAYS</div></div>
+    <div id="rhythm" class="rhythm"></div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="label">Lock-in message</div>
+    <div id="quote" class="quote" style="margin-top:10px">You don't need to feel motivated. You need to complete today's mission.</div>
+  </div>
+
+  <div class="card install">
+    <div class="row wrap"><div><div class="label">Install 100 PUSH</div><h3 style="margin:5px 0">Make it feel like an app</h3><p id="installText" class="muted" style="font-size:12px;margin:0">Install it to your Home screen for fullscreen use and offline access.</p></div><button id="installBtn" class="btn primary">INSTALL APP</button></div>
+  </div>
+</section>
+
+<section id="plan" class="screen">
+  <div class="eyebrow">Six weeks</div><h2>Your plan</h2>
+  <p class="muted">Three missions per week. Recover between sessions. Checkpoint tests after Weeks 2, 4 and 5 recalibrate what comes next.</p>
+  <div id="weeks"></div>
+</section>
+
+<section id="progressScreen" class="screen">
+  <div class="eyebrow">Progress</div><h2>Your numbers</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="label">Personal best</div><div style="margin:14px 0"><span id="pbBig" class="big">0</span><span class="muted"> strict reps</span></div>
+      <div class="progress"><div id="pbBar" class="bar"></div></div>
+      <div class="stats"><div class="stat"><b id="volBig">0</b><span>TOTAL REPS</span></div><div class="stat"><b id="missionsBig">0</b><span>MISSIONS</span></div><div class="stat"><b id="gainBig">+0</b><span>PB GAIN</span></div></div>
+    </div>
+    <div class="card"><div class="label">Achievements</div><div id="achievements" class="achievement-grid"></div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="row wrap"><div><h3 style="margin-bottom:4px">Progress backup</h3><p class="muted" style="font-size:12px;margin:0">Export occasionally so you can move phones or recover browser data.</p></div><div class="row wrap"><button id="exportBtn" class="btn ghost">EXPORT</button><button id="importBtn" class="btn ghost">IMPORT</button><input id="importFile" class="file" type="file" accept=".json,application/json"></div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="label">Check-in</div><div style="display:grid;grid-template-columns:140px 1fr;gap:10px;margin-top:10px"><input id="weight" class="input" type="number" step=".1" min="20" max="300" placeholder="kg"><input id="note" class="input" placeholder="How did today feel?"></div><button id="saveCheckin" class="btn primary" style="margin-top:10px">SAVE CHECK-IN</button>
+    <div id="checkins" style="margin-top:12px"></div>
+  </div>
+  <button id="reset" class="btn red" style="margin-top:14px">RESET ALL PROGRESS</button>
+</section>
+
+<section id="test" class="screen">
+  <div class="eyebrow">Recalibrate</div><h2>Max test</h2><p class="muted">Do as many strict consecutive push-ups as you can. Stop when the next clean rep is gone.</p>
+  <div class="card testbox">
+    <div class="label">Current count</div><div id="counter" class="counter">0</div>
+    <div class="row"><button id="minus" class="btn" style="flex:1">− 1</button><button id="plus" class="btn primary" style="flex:1">+ 1 REP</button></div>
+    <button id="saveTest" class="btn ghost" style="width:100%;margin-top:10px">SAVE MAX TEST</button>
+  </div>
+</section>
+
+<section id="workout" class="workout">
+  <div class="row wrap"><div><div id="woEyebrow" class="eyebrow">WEEK 1 · DAY 1</div><h2 id="woTitle">Mission</h2><p id="woSub" class="muted">Clean reps. One set at a time.</p></div><button id="closeWorkout" class="btn ghost">EXIT</button></div>
+  <div class="card">
+    <div class="row"><div id="restBadge" class="badge">REST 60 SEC</div><div id="volumeBadge" class="badge">0+ REPS</div></div>
+    <div id="setRows"></div>
+    <div id="timer" class="timer"><div class="label">Recover</div><div id="time" class="time">60</div><p class="muted">Shake your arms out. Breathe. Next set.</p><button id="skip" class="btn primary">SKIP REST</button></div>
+    <button id="finish" class="btn primary" style="width:100%;margin-top:12px" disabled>FINISH MISSION</button>
+  </div>
+</section>
+
+<footer class="footer">Independent training app inspired by the classic progressive 100-push-up challenge format. Stop for sharp pain, dizziness, chest pain or unusual shortness of breath.</footer>
+</div>
+
+<nav id="nav" class="nav">
+<button data-screen="today" class="active"><span>⌂</span>TODAY</button>
+<button data-screen="plan"><span>▦</span>PLAN</button>
+<button data-screen="progressScreen"><span>↗</span>PROGRESS</button>
+<button data-screen="test"><span>◎</span>TEST</button>
+</nav>
+
+<script>
+(function(){
+const KEY='push100_state_v4';
+const patterns={
+1:[{r:60,f:[.42,.52,.34,.34,.42]},{r:60,f:[.46,.58,.38,.38,.48]},{r:75,f:[.50,.64,.42,.42,.52]}],
+2:[{r:60,f:[.50,.64,.42,.42,.52]},{r:90,f:[.54,.70,.46,.46,.58]},{r:105,f:[.58,.76,.50,.50,.64]}],
+3:[{r:60,f:[.54,.68,.44,.44,.56]},{r:75,f:[.58,.74,.48,.48,.62]},{r:90,f:[.62,.80,.52,.52,.68]}],
+4:[{r:60,f:[.60,.76,.50,.50,.64]},{r:75,f:[.64,.82,.54,.54,.70]},{r:90,f:[.68,.88,.58,.58,.76]}],
+5:[{r:60,f:[.58,.74,.50,.46,.64]},{r:45,f:[.30,.30,.38,.38,.30,.30,.26,.70]},{r:45,f:[.34,.34,.42,.42,.34,.34,.28,.78]}],
+6:[{r:60,f:[.62,.78,.52,.48,.72]},{r:45,f:[.32,.32,.40,.40,.34,.34,.28,.28,.80]},{r:45,f:[.34,.34,.44,.44,.36,.36,.30,.30,.88]}]
+};
+const names=['Build the base','Add volume','Level up','Own the work','Density week','Century prep'];
+const quotes=[
+'You do not need to feel motivated. Complete today’s mission.',
+'Every clean rep is a vote for the person who can do 100.',
+'Do not chase 100 today. Chase the next clean set.',
+'Consistency beats hype. Bank another session.',
+'Rest is part of the program. Quitting is not.',
+'Your only job today is to leave the number higher than you found it.'
+];
+const blank={started:false,initialMax:0,currentMax:0,startWeek:1,completed:{},sessions:[],tests:[],weekBaselines:{},checkins:[],createdAt:null,lastSaved:null};
+let s=load(), active=null, setDone=[], restInt=null, testCount=0, deferredPrompt=null;
+const $=id=>document.getElementById(id);
+function load(){try{return Object.assign({},blank,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){return Object.assign({},blank)}}
+function save(){s.lastSaved=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(s));$('saveState').textContent='SAVED ✓';$('saveTime').textContent='Last saved '+new Date(s.lastSaved).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});}
+function toast(x){$('toast').textContent=x;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1500)}
+function key(w,d){return 'w'+w+'d'+d} function done(w,d){return !!s.completed[key(w,d)]}
+function baseline(w){if(s.weekBaselines[w])return s.weekBaselines[w];let b=s.initialMax||10;const t=s.tests.filter(x=>(x.weekContext||0)<w).slice(-1)[0];if(t)b=t.reps;return b}
+function workout(w,d){const p=patterns[w][d-1],b=baseline(w);return{week:w,day:d,rest:p.r,base:b,sets:p.f.map(v=>Math.max(1,Math.round(b*v))),amrap:p.f.length-1}}
+function next(){for(let w=s.startWeek||1;w<=6;w++)for(let d=1;d<=3;d++)if(!done(w,d))return{week:w,day:d};return null}
+function completed(){return Object.keys(s.completed).filter(k=>s.completed[k]).length}
+function total(){return s.sessions.reduce((a,x)=>a+(x.total||0),0)}
+function best(){return Math.max(s.currentMax||0,...s.tests.map(x=>x.reps||0))}
+function xp(){return completed()*120+total()+Math.max(0,best()-(s.initialMax||0))*25}
+function level(){return Math.floor(xp()/800)+1}
+function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.screen===id));$('workout').classList.remove('active');window.scrollTo({top:0,behavior:'smooth'})}
+function render(){
+ if(!s.started){$('setup').classList.add('active');$('nav').style.display='none';return}
+ $('setup').classList.remove('active');$('nav').style.display='grid';if(!document.querySelector('.screen.active'))show('today');
+ const n=next(),b=best(),count=completed(),denom=18-(s.startWeek-1)*3,pct=Math.round(count/denom*100);
+ $('weekTitle').textContent=n?'Week '+n.week:'Training complete';
+ $('motivation').textContent=n?names[n.week-1]+' · '+(3-n.day+1)+' mission'+(3-n.day+1===1?'':'s')+' left this week.':'Recover, then make your final 100 attempt.';
+ $('best').textContent=b;$('centuryBar').style.width=Math.min(100,b)+'%';$('centuryText').textContent=b>=100?'CENTURY UNLOCKED. You did it.':(100-b)+' reps between your PB and 100.';
+ $('progressText').textContent=count+' of '+denom+' missions';$('progressPct').textContent=pct+'%';$('challengeBar').style.width=pct+'%';
+ $('totalReps').textContent=total().toLocaleString();$('doneCount').textContent=count;$('prCount').textContent=s.tests.length;
+ $('xp').textContent=xp().toLocaleString();$('level').textContent=level();$('quote').textContent=quotes[(count+s.tests.length)%quotes.length];
+ if(n){const w=workout(n.week,n.day);$('nextLabel').textContent='W'+n.week+' D'+n.day;$('nextSets').innerHTML=w.sets.map((r,i)=>'<div class="setchip">'+r+(i===w.amrap?'+':'')+'</div>').join('');$('startWorkout').textContent='START MISSION';$('startWorkout').onclick=()=>openWorkout(n.week,n.day)}
+ else{$('nextLabel').textContent='FINAL';$('nextSets').innerHTML='<div class="setchip">100</div>';$('startWorkout').textContent='OPEN FINAL TEST';$('startWorkout').onclick=()=>show('test')}
+ $('pbBig').textContent=b;$('pbBar').style.width=Math.min(100,b)+'%';$('volBig').textContent=total().toLocaleString();$('missionsBig').textContent=count;$('gainBig').textContent=(b-(s.initialMax||b)>=0?'+':'')+(b-(s.initialMax||b));
+ renderRhythm();renderWeeks();renderAchievements();renderCheckins();if(s.lastSaved)$('saveTime').textContent='Last saved '+new Date(s.lastSaved).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+}
+function renderRhythm(){const box=$('rhythm');box.innerHTML='';let td=0;const trained=new Set(s.sessions.map(x=>x.date.slice(0,10)));for(let i=13;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const iso=d.toISOString().slice(0,10);const el=document.createElement('div');el.className='dot'+(trained.has(iso)?' done':'');el.textContent=d.getDate();el.title=iso;if(trained.has(iso))td++;box.appendChild(el)}$('rhythmScore').textContent=td+' TRAINING DAY'+(td===1?'':'S')}
+function renderWeeks(){const box=$('weeks');box.innerHTML='';for(let w=s.startWeek||1;w<=6;w++){const el=document.createElement('div');el.className='week';let days='';for(let d=1;d<=3;d++){const wo=workout(w,d);days+='<button class="day '+(done(w,d)?'done':'')+'" data-w="'+w+'" data-d="'+d+'"><small>DAY '+d+(done(w,d)?' ✓':'')+'</small><b>'+wo.sets.length+' sets · '+wo.rest+'s rest</b><small>'+wo.sets.reduce((a,b)=>a+b,0)+'+ target reps</small></button>'}el.innerHTML='<div class="weekhead"><div><b>Week '+w+'</b><br><small class="muted">'+names[w-1]+'</small></div><div class="badge">BASE '+baseline(w)+'</div></div><div class="days">'+days+'</div>';box.appendChild(el)}box.querySelectorAll('.day').forEach(b=>b.addEventListener('click',()=>openWorkout(+b.dataset.w,+b.dataset.d)))}
+function renderAchievements(){const t=total(),c=completed(),b=best();const arr=[['FIRST WIN','Complete 1 mission',c>=1],['500 CLUB','Bank 500 reps',t>=500],['1K REPS','Bank 1,000 reps',t>=1000],['WEEK DOWN','Complete 3 missions',c>=3],['HALFWAY','Reach a 50-rep PB',b>=50],['CENTURY','100 straight',b>=100]];$('achievements').innerHTML=arr.map(a=>'<div class="ach '+(a[2]?'on':'')+'"><b>'+(a[2]?'✓ ':'')+a[0]+'</b><small>'+a[1]+'</small></div>').join('')}
+function renderCheckins(){const box=$('checkins');const items=(s.checkins||[]).slice(-5).reverse();box.innerHTML=items.map(x=>'<div class="row" style="padding:9px 0;border-top:1px solid var(--line)"><small class="muted">'+new Date(x.date).toLocaleDateString()+'</small><span>'+(x.weight?x.weight+' kg · ':'')+(x.note||'Check-in')+'</span></div>').join('')}
+function build(){const m=Math.max(1,Math.min(200,parseInt($('startMax').value,10)||0));if(!m){toast('Enter your current max');return}s=Object.assign({},blank,{started:true,initialMax:m,currentMax:m,startWeek:m>20?3:1,completed:{},sessions:[],tests:[{reps:m,date:new Date().toISOString(),label:'Initial test',weekContext:0}],weekBaselines:{},checkins:[],createdAt:new Date().toISOString()});s.weekBaselines[s.startWeek]=m;save();show('today');render();toast('Plan built. Lock in.')}
+function openWorkout(w,d){active=workout(w,d);setDone=active.sets.map(()=>false);$('woEyebrow').textContent='WEEK '+w+' · DAY '+d;$('woTitle').textContent=names[w-1];$('woSub').textContent='Baseline '+active.base+' · clean reps only';$('restBadge').textContent='REST '+active.rest+' SEC';$('volumeBadge').textContent=active.sets.reduce((a,b)=>a+b,0)+'+ REPS';$('setRows').innerHTML=active.sets.map((r,i)=>'<div class="setrow" data-i="'+i+'"><div class="setnum">'+(i+1)+'</div><div class="reps">'+(i===active.amrap?'<input id="amrap" class="input" style="width:88px;padding:8px;text-align:center" type="number" min="'+r+'" value="'+r+'"> <small class="muted">MIN '+r+' · AMRAP</small>':r+' <small class="muted">REPS</small>')+'</div><button class="donebtn" data-i="'+i+'">DONE</button></div>').join('');$('finish').disabled=true;document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$('nav').style.display='none';$('workout').classList.add('active');$('timer').classList.remove('show');$('setRows').querySelectorAll('.donebtn').forEach(b=>b.addEventListener('click',()=>completeSet(+b.dataset.i)));window.scrollTo({top:0,behavior:'smooth'})}
+function completeSet(i){if(setDone[i])return;if(i===active.amrap){const v=parseInt($('amrap').value,10)||0;if(v<active.sets[i]){toast('Aim for at least '+active.sets[i]+' clean reps');return}}setDone[i]=true;const row=$('setRows').querySelector('[data-i="'+i+'"]');row.classList.add('complete');row.querySelector('button').disabled=true;const all=setDone.every(Boolean);$('finish').disabled=!all;if(!all)startRest(active.rest);else toast('All sets done. Finish it.')}
+function startRest(sec){clearInterval(restInt);let n=sec;$('time').textContent=n;$('timer').classList.add('show');restInt=setInterval(()=>{n--;$('time').textContent=n;if(n<=0){clearInterval(restInt);$('timer').classList.remove('show');if(navigator.vibrate)navigator.vibrate([80,40,80])}},1000)}
+function finishWorkout(){if(!active||!setDone.every(Boolean))return;let reps=active.sets.slice();if($('amrap'))reps[active.amrap]=parseInt($('amrap').value,10)||active.sets[active.amrap];const totalNow=reps.reduce((a,b)=>a+b,0);s.completed[key(active.week,active.day)]=true;s.sessions.push({week:active.week,day:active.day,reps,total:totalNow,date:new Date().toISOString(),baseline:active.base});if(active.day===3&&active.week<6&&!s.weekBaselines[active.week+1])s.weekBaselines[active.week+1]=s.currentMax;save();active=null;$('workout').classList.remove('active');$('nav').style.display='grid';show('today');render();toast(totalNow+' reps banked + XP');}
+function inferContext(){for(const w of [2,4,5,6])if(done(w,3)&&!s.tests.some(t=>t.weekContext===w))return w;const n=next();return n?Math.max(0,n.week-1):6}
+function saveMax(){if(testCount<1){toast('Add your reps first');return}const ctx=inferContext();s.currentMax=Math.max(s.currentMax,testCount);s.tests.push({reps:testCount,date:new Date().toISOString(),label:ctx===6?'Final test':'Max test',weekContext:ctx});if(ctx+1<=6)s.weekBaselines[ctx+1]=testCount;save();const was=testCount;testCount=0;$('counter').textContent='0';show('progressScreen');render();toast(was>=100?'CENTURY UNLOCKED!':'New test saved. Plan recalibrated.')}
+function exportData(){const blob=new Blob([JSON.stringify({app:'100 PUSH',version:4,exportedAt:new Date().toISOString(),state:s},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='100-push-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(a.href);toast('Backup exported')}
+function importData(file){const r=new FileReader();r.onload=()=>{try{const j=JSON.parse(r.result);const incoming=j.state||j;if(!incoming||typeof incoming!=='object'||!incoming.started)throw new Error('Invalid');s=Object.assign({},blank,incoming);save();render();show('today');toast('Progress restored')}catch(e){toast('That backup could not be read')}};r.readAsText(file)}
+function reset(){if(!confirm('Reset the entire 100 PUSH challenge?'))return;localStorage.removeItem(KEY);s=Object.assign({},blank);location.reload()}
+$('build').addEventListener('click',build);$('startMax').addEventListener('keydown',e=>{if(e.key==='Enter')build()});
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>show(b.dataset.screen)));
+$('closeWorkout').addEventListener('click',()=>{clearInterval(restInt);$('workout').classList.remove('active');$('nav').style.display='grid';show('today')});
+$('skip').addEventListener('click',()=>{clearInterval(restInt);$('timer').classList.remove('show')});$('finish').addEventListener('click',finishWorkout);
+$('plus').addEventListener('click',()=>{$('counter').textContent=++testCount});$('minus').addEventListener('click',()=>{$('counter').textContent=testCount=Math.max(0,testCount-1)});$('saveTest').addEventListener('click',saveMax);
+$('exportBtn').addEventListener('click',exportData);$('importBtn').addEventListener('click',()=>$('importFile').click());$('importFile').addEventListener('change',e=>{if(e.target.files[0])importData(e.target.files[0])});
+$('saveCheckin').addEventListener('click',()=>{const w=parseFloat($('weight').value);const note=$('note').value.trim();if(!w&&!note){toast('Add weight or a note');return}s.checkins=s.checkins||[];s.checkins.push({date:new Date().toISOString(),weight:w||null,note});$('weight').value='';$('note').value='';save();render();toast('Check-in saved')});$('reset').addEventListener('click',reset);
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('installBtn').disabled=false;$('installText').textContent='Ready to install. Tap the button and add 100 PUSH to your phone.'});
+$('installBtn').addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null}else{$('installText').textContent='In Chrome, open the ⋮ menu and choose Install app or Add to Home screen.';toast('Use Chrome menu → Install app')}});
+window.addEventListener('appinstalled',()=>{toast('100 PUSH installed ✓');$('installText').textContent='Installed. Open it from your Home screen like any other app.'});
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js').catch(()=>{}));
+render();if(s.started)show('today');
+})();
+</script>
+</body>
+</html>
