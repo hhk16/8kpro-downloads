@@ -199,7 +199,7 @@ const quotes=[
 'Rest is part of the program. Quitting is not.',
 'Your only job today is to leave the number higher than you found it.'
 ];
-const blank={started:false,initialMax:0,currentMax:0,startWeek:1,completed:{},sessions:[],tests:[],weekBaselines:{},checkins:[],createdAt:null,lastSaved:null,adaptiveMultiplier:1,needsRetest:false,lastAdaptation:null,soundEnabled:true};
+const blank={started:false,initialMax:0,currentMax:0,startWeek:1,completed:{},sessions:[],tests:[],weekBaselines:{},checkins:[],createdAt:null,lastSaved:null,adaptiveMultiplier:1,needsRetest:false,lastAdaptation:null,soundEnabled:true,scheduleStartDate:null,scheduleShiftDays:0,reminderTime:'18:00',remindersEnabled:false};
 let s=load(), active=null, setDone=[], actualReps=[], restInt=null, testCount=0, deferredPrompt=null, audioCtx=null;
 const $=id=>document.getElementById(id);
 function load(){try{return Object.assign({},blank,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){return Object.assign({},blank)}}
@@ -208,8 +208,24 @@ function toast(x){$('toast').textContent=x;$('toast').classList.add('show');setT
 function key(w,d){return 'w'+w+'d'+d} function done(w,d){return !!s.completed[key(w,d)]}
 function baseline(w){if(s.weekBaselines[w])return s.weekBaselines[w];let b=s.initialMax||10;const t=s.tests.filter(x=>(x.weekContext||0)<w).slice(-1)[0];if(t)b=t.reps;return b}
 function adaptScale(){return Math.max(.85,Math.min(1.6,Number(s.adaptiveMultiplier)||1))}
-function workout(w,d){const p=patterns[w][d-1],b=baseline(w),scale=adaptScale();return{week:w,day:d,rest:p.r,base:b,scale,sets:p.f.map(v=>Math.max(1,Math.round(b*v*scale))),amrap:p.f.length-1}}
-function next(){for(let w=s.startWeek||1;w<=6;w++)for(let d=1;d<=3;d++)if(!done(w,d))return{week:w,day:d};return null}
+function programWeek(w){return w<=6?w:3+((w-7)%4)}
+function phaseName(w){return names[programWeek(w)-1]}
+function workout(w,d){const pw=programWeek(w),p=patterns[pw][d-1],b=baseline(w),scale=adaptScale();return{week:w,day:d,rest:p.r,base:b,scale,sets:p.f.map(v=>Math.max(1,Math.round(b*v*scale))),amrap:p.f.length-1}}
+function next(){if(best()>=100)return null;for(let w=s.startWeek||1;w<(s.startWeek||1)+300;w++)for(let d=1;d<=3;d++)if(!done(w,d))return{week:w,day:d};return null}
+function missionOrdinal(w,d){return Math.max(0,(w-(s.startWeek||1))*3+(d-1))}
+function localDate(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return y+'-'+m+'-'+day}
+function parseLocalDate(str){const p=(str||'').split('-').map(Number);return new Date(p[0],(p[1]||1)-1,p[2]||1,12,0,0,0)}
+function addDays(str,n){const d=parseLocalDate(str);d.setDate(d.getDate()+n);return localDate(d)}
+function dayDiff(a,b){return Math.round((parseLocalDate(a)-parseLocalDate(b))/86400000)}
+function scheduleAnchor(){if(s.scheduleStartDate)return s.scheduleStartDate;if(s.createdAt)return localDate(new Date(s.createdAt));return localDate(new Date())}
+function cycleForOrdinal(ord){return Math.floor(ord/18)}
+function workoutOffset(ord){const cyc=cycleForOrdinal(ord),inside=ord%18,wk=Math.floor(inside/3),di=inside%3;return cyc*44+wk*7+[0,2,4][di]}
+function workoutDueDate(w,d){return addDays(scheduleAnchor(),workoutOffset(missionOrdinal(w,d))+(Number(s.scheduleShiftDays)||0))}
+function cycleCheckpointWeek(cyc){return (s.startWeek||1)+cyc*6+5}
+function testDueDateForCycle(cyc){return addDays(scheduleAnchor(),cyc*44+42+(Number(s.scheduleShiftDays)||0))}
+function pendingCycleTest(){for(let cyc=0;cyc<50;cyc++){const wk=cycleCheckpointWeek(cyc);if(done(wk,3)&&!s.tests.some(t=>t.weekContext===wk))return{cycle:cyc,week:wk,date:testDueDateForCycle(cyc)}}return null}
+function nextEvent(){const t=pendingCycleTest();if(t)return{type:'test',week:t.week,date:t.date};const n=next();return n?{type:'workout',week:n.week,day:n.day,date:workoutDueDate(n.week,n.day)}:null}
+function formatScheduleDate(str){const d=parseLocalDate(str);return d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'})}
 function completed(){return Object.keys(s.completed).filter(k=>s.completed[k]).length}
 function total(){return s.sessions.reduce((a,x)=>a+(x.total||0),0)}
 function best(){return Math.max(s.currentMax||0,...s.tests.map(x=>x.reps||0))}
