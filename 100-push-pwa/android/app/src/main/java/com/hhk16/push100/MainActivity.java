@@ -2,6 +2,7 @@ package com.hhk16.push100;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -34,6 +35,7 @@ public class MainActivity extends Activity {
     private static final String APP_URL = "https://100-push-production.up.railway.app/";
     private static final String CHANNEL_ID = "push100_rest";
     private static final int NOTIFICATION_ID = 100;
+    private static final int WORKOUT_REMINDER_REQUEST = 200;
     private static final int NOTIFICATION_PERMISSION_REQUEST = 1001;
 
     private WebView webView;
@@ -191,6 +193,38 @@ public class MainActivity extends Activity {
         }
     }
 
+    private void scheduleWorkoutReminder(long epochMs, String title, String message) {
+        if (epochMs <= System.currentTimeMillis() + 30000L) return;
+        Intent intent = new Intent(this, WorkoutReminderReceiver.class);
+        intent.putExtra("title", title);
+        intent.putExtra("message", message);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this,
+                WORKOUT_REMINDER_REQUEST,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        if (alarmManager != null) {
+            alarmManager.setWindow(AlarmManager.RTC_WAKEUP, epochMs, 15 * 60 * 1000L, pendingIntent);
+        }
+    }
+
+    private void cancelWorkoutReminder() {
+        Intent intent = new Intent(this, WorkoutReminderReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this,
+                WORKOUT_REMINDER_REQUEST,
+                intent,
+                PendingIntent.FLAG_NO_CREATE | PendingIntent.FLAG_IMMUTABLE
+        );
+        if (pendingIntent != null) {
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            if (alarmManager != null) alarmManager.cancel(pendingIntent);
+            pendingIntent.cancel();
+        }
+    }
+
     private void showRestNotification(String title, String message) {
         long now = System.currentTimeMillis();
         if (now - lastRestAlertMs < 2500) return;
@@ -276,6 +310,19 @@ public class MainActivity extends Activity {
                     showRestNotification(title, message);
                 }
             });
+        }
+
+        @JavascriptInterface
+        public void scheduleWorkoutReminder(long epochMs, String title, String message) {
+            runOnUiThread(() -> {
+                requestNotificationPermissionIfNeeded();
+                MainActivity.this.scheduleWorkoutReminder(epochMs, title, message);
+            });
+        }
+
+        @JavascriptInterface
+        public void cancelWorkoutReminder() {
+            runOnUiThread(() -> MainActivity.this.cancelWorkoutReminder());
         }
 
         @JavascriptInterface
