@@ -25,6 +25,19 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - name: Check web app JavaScript
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html = Path("100-push-pwa/index.html").read_text(encoding="utf-8")
+          start = html.rfind("<script>")
+          end = html.rfind("</script>")
+          if start < 0 or end < 0 or end <= start:
+              raise SystemExit("Could not find final script block")
+          Path("/tmp/100-push-app.js").write_text(html[start + len("<script>"):end], encoding="utf-8")
+          PY
+          node --check /tmp/100-push-app.js
+
       - name: Install Android command-line tools and SDK 35
         run: |
           set -e
